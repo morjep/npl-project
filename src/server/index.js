@@ -2,8 +2,13 @@ const path = require('path');
 const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
 const cors = require("cors");
+const dotenv = require('dotenv');
 
 const app = express();
+
+// Init dotenv
+dotenv.config();
+console.log(`Your API key is ${process.env.API_KEY}`);
 
 // Cors for cross origin allowance
 app.use(cors());
