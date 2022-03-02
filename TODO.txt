@@ -1,2 +1,1 @@
-Build and test project
 Install eslint and configure for VS code
