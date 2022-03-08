@@ -8,38 +8,12 @@ function handleSubmit(event) {
   console.log("::: Form Submitted :::");
   console.log(formText);
 
-  // fetch("http://localhost:8081/test")
-  //   .then((res) => res.json())
-  //   .then((res) => {
-  //     document.getElementById("results").innerHTML = res.message;
-  //   });
-
+  /* Sending a POST request to the server with the text that the user entered. */
   postData(serverUrl + "/sentiment", formText)
     .then((res) => {
       document.getElementById("results").innerHTML = res.message;
     });
 
-  // const formdata = new FormData();
-  // formdata.append("key", "2833660a909ea73031bbce0a6845c5b0");
-  // formdata.append("txt", "Main dishes were quite good, but desserts were too sweet for me.");
-  // formdata.append("lang", "en"); // 2-letter code, like en es fr ...
-
-  // const requestOptions = {
-  //   method: "POST",
-  //   body: formdata,
-  //   redirect: "follow",
-  // };
-
-  // const response = fetch(
-  //   "https://api.meaningcloud.com/sentiment-2.1",
-  //   requestOptions
-  // )
-  //   .then((response) => ({
-  //     status: response.status,
-  //     body: response.json(),
-  //   }))
-  //   .then(({ status, body }) => console.log(status, body))
-  //   .catch((error) => console.log("error", error));
 }
 
 /**
