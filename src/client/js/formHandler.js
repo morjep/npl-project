@@ -8,8 +8,12 @@ function handleSubmit(event) {
   console.log("::: Form Submitted :::");
   console.log(formText);
 
+  const json = {
+    url: formText,
+  };
+
   /* Sending a POST request to the server with the text that the user entered. */
-  postData(serverUrl + "/sentiment", formText)
+  postData(serverUrl + "/sentiment", json)
     .then((res) => {
       document.getElementById("results").innerHTML = res.agreement;
     });

@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const FormData = require("form-data");
@@ -11,6 +12,10 @@ const app = express();
 // Init dotenv
 dotenv.config();
 console.log(`Your API key is ${process.env.API_KEY}`);
+
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 app.use(cors());
@@ -51,9 +56,10 @@ const jsonTest = {
 /* It sends a request to the MeaningCloud API and returns the response. */
 app.post("/sentiment", (req, res) => {
   logRequest(req);
+  console.log(req.body);
   sentimentData = sentiment("Main dishes were quite good, but desserts were too sweet for me.");
   sentimentData.then(function(result) {
-    console.log(result);
+    // console.log(result);
     res.send(JSON.stringify(result));
   });
 });
