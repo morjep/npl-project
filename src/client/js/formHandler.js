@@ -11,7 +11,7 @@ function handleSubmit(event) {
   /* Sending a POST request to the server with the text that the user entered. */
   postData(serverUrl + "/sentiment", formText)
     .then((res) => {
-      document.getElementById("results").innerHTML = res.message;
+      document.getElementById("results").innerHTML = res.agreement;
     });
 
 }

@@ -3,8 +3,8 @@ const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const FormData = require('form-data');
-const fetch = require('node-fetch')
+const FormData = require("form-data");
+const fetch = require("node-fetch");
 
 const app = express();
 
@@ -48,32 +48,45 @@ const jsonTest = {
   time: "now",
 };
 
+/* It sends a request to the MeaningCloud API and returns the response. */
 app.post("/sentiment", (req, res) => {
   logRequest(req);
-  sentiment("Main dishes were quite good, but desserts were too sweet for me.");
-  res.send(JSON.stringify(jsonTest));
+  sentimentData = sentiment("Main dishes were quite good, but desserts were too sweet for me.");
+  sentimentData.then(function(result) {
+    console.log(result);
+    res.send(JSON.stringify(result));
+  });
 });
 
+
+/**
+ * It sends a request to the MeaningCloud API and returns the response.
+ * @param data - The text to be analyzed.
+ */
 const sentiment = async (data) => {
+  /* It creates a new FormData object and adds the API key and the text to be
+  analyzed to it. */
   const formdata = new FormData();
   formdata.append("key", process.env.API_KEY);
   formdata.append("txt", data);
   formdata.append("lang", "auto"); // 2-letter code, like en es fr ...
 
+  /* Creating a new object that contains the request options. */
   const requestOptions = {
     method: "POST",
     body: formdata,
     redirect: "follow",
   };
 
-  const response = fetch(
+  const response = await fetch(
     "https://api.meaningcloud.com/sentiment-2.1",
     requestOptions
   )
-    .then((response) => ({
-      status: response.status,
-      body: response.json(),
-    }))
-    .then(({ status, body }) => console.log(status, body))
-    .catch((error) => console.log("error", error));
+
+  try {
+    const apiData = await response.json();
+    return apiData;
+  } catch (error) {
+    console.log("error", error);
+  }
 };
