@@ -1,23 +1,35 @@
 const serverUrl = "http://localhost:8081";
 
+export const isValidUrl = (url) => {
+  try {
+    new URL(url);
+  } catch (e) {
+    console.error(e);
+    alert("Invalid URL");
+    return false;
+  }
+  return true;
+};
+
 function handleSubmit(event) {
   event.preventDefault();
 
   /* Getting the value of the input field with the id of `name` */
   const formText = document.getElementById("name").value;
   console.log("::: Form Submitted :::");
-  console.log(formText);
 
-  const json = {
-    url: formText,
-  };
+  if (isValidUrl(formText)) {
+    const json = {
+      url: formText,
+    };
 
-  /* Sending a POST request to the server with the text that the user entered. */
-  postData(serverUrl + "/sentiment", json)
-    .then((res) => {
+    /* Sending a POST request to the server with the text that the user entered. */
+    postData(serverUrl + "/sentiment", json).then((res) => {
       document.getElementById("results").innerHTML = res.agreement;
     });
-
+  } else {
+    document.getElementById("name").value = "Please enter valid URL";
+  }
 }
 
 /**
