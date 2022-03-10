@@ -1,6 +1,5 @@
 const path = require("path");
 const express = require("express");
-const mockAPIResponse = require("./mockAPI.js");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -42,24 +41,13 @@ function logRequest(req) {
   console.log(`${req.method} request on ${req.url}`);
 }
 
-app.get("/test", (req, res) => {
-  logRequest(req);
-  res.send(mockAPIResponse);
-});
-
-const jsonTest = {
-  title: "test json response",
-  message: "this is a message",
-  time: "now",
-};
-
 /* It sends a request to the MeaningCloud API and returns the response. */
 app.post("/sentiment", (req, res) => {
   logRequest(req);
-  console.log(req.body);
-  sentimentData = sentiment("Main dishes were quite good, but desserts were too sweet for me.");
+  console.log(req.body.url);
+  sentimentData = sentiment(req.body.url);
   sentimentData.then(function(result) {
-    // console.log(result);
+    console.log(result);
     res.send(JSON.stringify(result));
   });
 });

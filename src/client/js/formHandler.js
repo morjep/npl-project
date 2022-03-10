@@ -1,11 +1,9 @@
 const serverUrl = "http://localhost:8081";
 
-export const isValidUrl = (url) => {
+const isValidUrl = (url) => {
   try {
     new URL(url);
   } catch (e) {
-    console.error(e);
-    alert("Invalid URL");
     return false;
   }
   return true;
@@ -25,21 +23,17 @@ function handleSubmit(event) {
 
     /* Sending a POST request to the server with the text that the user entered. */
     postData(serverUrl + "/sentiment", json).then((res) => {
-      document.getElementById("results").innerHTML = res.agreement;
+      const text = "URL: " + formText + ",  Sentiment: " + res.agreement + ",  Model: " + res.model;
+      const prevText = document.getElementById("results").innerHTML;
+      document.getElementById("results").innerHTML = text + "<br>" + prevText;
+
     });
   } else {
+    alert("Invalid URL");
     document.getElementById("name").value = "Please enter valid URL";
   }
 }
 
-/**
- * Function postData
- * It takes a URL and some data,
- * and sends a POST request to that URL with the data
- * @param [url] - The URL to which the request is sent.
- * @param [data] - The data that will be sent to the server.
- * @returns The `postData` function returns a promise.
- */
 const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
