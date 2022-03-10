@@ -14,7 +14,6 @@ function handleSubmit(event) {
 
   /* Getting the value of the input field with the id of `name` */
   const formText = document.getElementById("name").value;
-  console.log("::: Form Submitted :::");
 
   if (isValidUrl(formText)) {
     const json = {
@@ -47,9 +46,8 @@ const postData = async (url = "", data = {}) => {
   /* The try...catch block is used to catch any errors that may occur while parsing
   the JSON data. */
   try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
+    const apiData = await response.json();
+    return apiData;
   } catch (error) {
     console.log("error", error);
   }

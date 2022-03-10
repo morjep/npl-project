@@ -1,7 +1,0 @@
-Server: Install form-data for node?
-Server: Build formData to API
-Server: Send data to API
-Server: Parse response and send relevant text back to front-end
-Client: Present response
-
-Client: Remove namechecker.js
