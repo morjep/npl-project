@@ -1,13 +1,13 @@
 const serverUrl = "http://localhost:8081";
 
-const isValidUrl = (url) => {
-  try {
-    new URL(url);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
+// const isValidUrl = (url) => {
+//   try {
+//     new URL(url);
+//   } catch (e) {
+//     return false;
+//   }
+//   return true;
+// };
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -15,7 +15,7 @@ function handleSubmit(event) {
   /* Getting the value of the input field with the id of `name` */
   const formText = document.getElementById("name").value;
 
-  if (isValidUrl(formText)) {
+  if (Client.isValidUrl(formText)) {
     const json = {
       url: formText,
     };

@@ -1,3 +1,4 @@
+import isValidUrl from './js/util';
 import handleSubmit from './js/formHandler';
 
 import './styles/resets.scss';
@@ -6,4 +7,4 @@ import './styles/footer.scss';
 import './styles/form.scss';
 import './styles/header.scss';
 
-export { handleSubmit };
+export { handleSubmit, isValidUrl };
