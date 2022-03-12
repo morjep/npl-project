@@ -1,14 +1,5 @@
 const serverUrl = "http://localhost:8081";
 
-// const isValidUrl = (url) => {
-//   try {
-//     new URL(url);
-//   } catch (e) {
-//     return false;
-//   }
-//   return true;
-// };
-
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -22,9 +13,8 @@ function handleSubmit(event) {
 
     /* Sending a POST request to the server with the text that the user entered. */
     postData(serverUrl + "/sentiment", json).then((res) => {
-      const text = "URL: " + formText + ",  Sentiment: " + res.agreement + ",  Model: " + res.model;
-      const prevText = document.getElementById("results").innerHTML;
-      document.getElementById("results").innerHTML = text + "<br>" + prevText;
+      const text = "URL: " + formText + "<br>" + "Sentiment: " + res.agreement + "<br>" + "Model: " + res.model;
+      document.getElementById("results").innerHTML = text;
 
     });
   } else {

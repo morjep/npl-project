@@ -14,15 +14,15 @@
         </header>
 
         <main>
-            <section>
+            <section id="userinput">
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="name" type="text" name="input" value="Enter valid URL" placeholder="Name">
                     <input id="submit" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
-            <section>
-                <strong>Results of sentiment analysis:</strong>
+            <section id="analysisoutput">
+                <h2>Results of sentiment analysis:</h2>
                 <div id="results"></div>
             </section>
         </main>
