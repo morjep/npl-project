@@ -13,7 +13,8 @@ function handleSubmit(event) {
 
     /* Sending a POST request to the server with the text that the user entered. */
     postData(serverUrl + "/sentiment", json).then((res) => {
-      const text = "URL: " + formText + "<br>" + "Sentiment: " + res.agreement + "<br>" + "Model: " + res.model;
+      const shortText = formText.slice(0, 40)+'...';
+      const text = "URL: " + shortText + "<br>" + "Sentiment: " + res.agreement + "<br>" + "Model: " + res.model;
       document.getElementById("results").innerHTML = text;
     });
   } else {
