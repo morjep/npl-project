@@ -1,0 +1,5 @@
+Add background image
+Fix header and footer
+Change node-fetch from dev dependency to regular dependency
+Use jest
+Use service worker
