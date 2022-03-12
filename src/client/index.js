@@ -7,4 +7,9 @@ import './styles/footer.scss';
 import './styles/form.scss';
 import './styles/header.scss';
 
+const submitButton = document.getElementById("submit");
+submitButton.addEventListener("click", event => {
+    Client.handleSubmit(event);
+});
+
 export { handleSubmit, isValidUrl };

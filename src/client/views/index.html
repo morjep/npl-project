@@ -14,10 +14,11 @@
         </header>
 
         <main>
-            <section id="userinput">
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="Enter valid URL" placeholder="Name">
-                    <input id="submit" type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+            <section >
+                <form class="" id="userinput">
+                    <label for="url">URL:</label><br>
+                    <input id="url" type="text" name="input" value="" placeholder="Enter URL">
+                    <input id="submit" type="submit" name="" value="submit">
                 </form>
             <section>
 
@@ -30,7 +31,7 @@
         <footer>
             <p>Udacity Front-end Developer Nano-degree 2022</p>
         </footer>
-        <script src="main.js"></script>
+        <!-- <script src="main.js"></script> -->
     </body>
 
 </html>

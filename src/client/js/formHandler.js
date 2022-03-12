@@ -4,7 +4,7 @@ function handleSubmit(event) {
   event.preventDefault();
 
   /* Getting the value of the input field with the id of `name` */
-  const formText = document.getElementById("name").value;
+  const formText = document.getElementById("url").value;
 
   if (Client.isValidUrl(formText)) {
     const json = {
@@ -15,12 +15,11 @@ function handleSubmit(event) {
     postData(serverUrl + "/sentiment", json).then((res) => {
       const text = "URL: " + formText + "<br>" + "Sentiment: " + res.agreement + "<br>" + "Model: " + res.model;
       document.getElementById("results").innerHTML = text;
-
     });
   } else {
     alert("Invalid URL");
-    document.getElementById("name").value = "Please enter valid URL";
   }
+  document.getElementById("url").value = "";
 }
 
 const postData = async (url = "", data = {}) => {
