@@ -5,7 +5,7 @@ The project consists of a
 - Webserver - Node
 - Web application framework for routing - Express
 - Build tool - Webpack
-- Service worker -
+- Service worker - Workbox
 - External API - Meaningcloud
 
 The solution allows you to enter an URL on the webpage, which will then be sent to the meaningcloud sentiment analysis API.
